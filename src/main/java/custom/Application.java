@@ -1,7 +1,5 @@
 package custom;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import custom.mapper.MapperException;
 import custom.mapper.namespace.NamespaceMapper;
 import custom.mapper.namespace.SObject;
@@ -16,9 +14,6 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException, MapperException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-
         setLoggingLevel(ch.qos.logback.classic.Level.INFO);
 
         SubModel sm = new SubModel();
@@ -44,20 +39,19 @@ public class Application {
         NamespaceMapper mapper = new NamespaceMapper();
         SObject sObject = mapper.readValue(mwa);
 
-        log.info("model_with_annotation=={}", sObject.getType());
-        log.info("THIS IS MY NAME: DMD!=={}", sObject.getFields().get("default_namespace__Model_name"));
-        log.info("\n{}", objectMapper.writeValueAsString(sObject));
+        assert "model_with_annotation".equals(sObject.getType());
+        assert"THIS IS MY NAME: DMD!=={}".equals(sObject.getFields().get("default_namespace__Model_name"));
 
         ModelWithAnnotations mwa2 = mapper.writeValue(sObject, new ModelWithAnnotations());
 
 
-        log.info("==============================================================\n");
-        log.info("==============================================================\n\n");
-
+        log.info("<<·······················································>>");
+        log.info("=================== SOBJECT ==============================");
+        log.info(sObject.toString());
         log.info("=================== ORIGINAL ==============================");
-        log.info(objectMapper.writeValueAsString(mwa));
+        log.info(mwa.toString());
         log.info("=================== WRITTEN AS VALE =======================");
-        log.info(objectMapper.writeValueAsString(mwa2));
+        log.info(mwa2.toString());
 
     }
 

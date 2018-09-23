@@ -2,11 +2,11 @@ package custom.mapper.namespace.annotation;
 
 import lombok.Data;
 
-@MapperType("SubModel")
+@MapperTypeCustom("SubModel")
 @Data
 public class SubModel {
 
-    @MapperField("SubModelName")
+    @MapperFieldCustom("SubModelName")
     private String name;
 
 }
