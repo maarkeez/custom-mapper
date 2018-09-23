@@ -2,7 +2,9 @@ package custom.mapper.namespace.annotation;
 
 import lombok.Data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 
 @MapperType("model_with_annotation")
 @Data

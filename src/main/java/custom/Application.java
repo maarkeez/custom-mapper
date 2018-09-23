@@ -48,7 +48,7 @@ public class Application {
         log.info("THIS IS MY NAME: DMD!=={}", sObject.getFields().get("default_namespace__Model_name"));
         log.info("\n{}", objectMapper.writeValueAsString(sObject));
 
-        ModelWithAnnotations mwa2= mapper.writeValue(sObject,new ModelWithAnnotations() );
+        ModelWithAnnotations mwa2 = mapper.writeValue(sObject, new ModelWithAnnotations());
 
 
         log.info("==============================================================\n");

@@ -14,10 +14,9 @@ class NamespaceWrapper implements Wrapper<SObject> {
     @Getter
     private SObject sObject;
 
-    public NamespaceWrapper(){
+    public NamespaceWrapper() {
         this.sObject = new SObject();
     }
-
 
 
     @Override

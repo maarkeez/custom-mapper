@@ -1,12 +1,9 @@
 package custom.mapper;
 
 
-import com.sun.org.apache.xml.internal.resolver.readers.ExtendedXMLCatalogReader;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.*;
 
 @Slf4j
@@ -49,9 +46,9 @@ public abstract class AnnotationMapper<D> extends MapperAbstract<D> {
                                     Object itObj = iter.next();
                                     log.debug("    - This is the nested iterable object: {}", itObj);
 
-                                    if(Number.class.isAssignableFrom(iterableClass) || String.class.isAssignableFrom(iterableClass)) {
+                                    if (Number.class.isAssignableFrom(iterableClass) || String.class.isAssignableFrom(iterableClass)) {
                                         list.add(itObj);
-                                    }else {
+                                    } else {
 
                                         D itObjDest = readValue(itObj);
                                         if (itObjDest != null) {
@@ -116,7 +113,7 @@ public abstract class AnnotationMapper<D> extends MapperAbstract<D> {
 
                                 if (String.class.isAssignableFrom(iterableClass) || Number.class.isAssignableFrom(iterableClass)) {
                                     newCollection.add(innerObject);
-                                }else{
+                                } else {
                                     Object obj = iterableClass.newInstance();
                                     writeValue(innerObject, obj);
                                     newCollection.add(obj);

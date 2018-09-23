@@ -1,7 +1,5 @@
 package custom.mapper;
 
-import java.lang.reflect.Field;
-
 /**
  * This interface defined needed methods to marshall and un-marshall to the target generic class:<br/>
  * <code><li>D</li></code>
